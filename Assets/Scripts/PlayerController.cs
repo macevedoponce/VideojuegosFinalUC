@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public bool avanzoSolo;
     public float impulsoDeGolpe = 5f;
 
+    //Audios
+
+
     //correr
     public float velCorrer;
 
@@ -52,7 +55,7 @@ public class PlayerController : MonoBehaviour
         //correr
         if(Input.GetKey(KeyCode.LeftShift) && puedeSaltar && !estoyAtacando)
         {
-            speed = velCorrer * Time.deltaTime;
+            speed = velCorrer;
             if(y > 0)
             {
                 anim.SetBool("correr", true);
