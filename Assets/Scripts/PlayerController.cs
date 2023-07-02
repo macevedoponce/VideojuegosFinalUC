@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f;
     public float speedRotacion = 200.0f;
-    private Animator anim;
-    public float x, y;
+    public Animator anim;
+    private float mouseX, mouseY;
 
     public Rigidbody rb;
     public float fuerzaSalto = 8.0f;
@@ -17,30 +17,39 @@ public class PlayerController : MonoBehaviour
     public bool avanzoSolo;
     public float impulsoDeGolpe = 5f;
 
-    //Audios
-
-
     //correr
     public float velCorrer;
+
+    //velocidad del mouse
+    public float mouseSensitivity = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         puedeSaltar = false;
         anim = GetComponent<Animator>();
+
+        // Mostrar y desbloquear el cursor del mouse
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void FixedUpdate()
     {
-
         if (!estoyAtacando) //si no ataco me puedo mover
         {
-            transform.Rotate(0, x * Time.deltaTime * speedRotacion, 0); //rota
-            transform.Translate(0, 0, y * Time.deltaTime * speed);//desplazamiento
+            float rotationY = transform.localEulerAngles.y + mouseX * Time.deltaTime * speedRotacion * mouseSensitivity;
+            transform.localEulerAngles = new Vector3(0, rotationY, 0); //rotación horizontal
+
+            // Movimiento vertical (adelante/atrás)
+            Vector3 movement = transform.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + movement); //desplazamiento
+            // Movimiento horizontal (izquierda/derecha)
+            movement = transform.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + movement); //desplazamiento
         }
 
-        
-        if(avanzoSolo)
+        if (avanzoSolo)
         {
             rb.velocity = transform.forward * impulsoDeGolpe;
         }
@@ -49,21 +58,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
+
+        // Ajustar la velocidad del mouse
+        mouseSensitivity = Mathf.Clamp(mouseSensitivity + Input.GetAxis("Mouse ScrollWheel"), 1.0f, 10.0f);
 
         //correr
-        if(Input.GetKey(KeyCode.LeftShift) && puedeSaltar && !estoyAtacando)
+        if (Input.GetKey(KeyCode.LeftShift) && puedeSaltar && !estoyAtacando)
         {
             speed = velCorrer;
-            if(y > 0)
-            {
-                anim.SetBool("correr", true);
-            }
-            else
-            {
-                anim.SetBool("correr", false);
-            }
+            anim.SetBool("correr", (Input.GetAxis("Vertical") > 0));
         }
         else
         {
@@ -72,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //btn atacck
-        if(Input.GetKeyDown(KeyCode.Return) && puedeSaltar && !estoyAtacando)
+        if (Input.GetKeyDown(KeyCode.Return) && puedeSaltar && !estoyAtacando)
         {
             anim.SetTrigger("golpeo");
             estoyAtacando = true;
@@ -84,8 +89,8 @@ public class PlayerController : MonoBehaviour
             estoyAtacando = true;
         }
 
-        anim.SetFloat("VelX", x);
-        anim.SetFloat("VelY", y);
+        anim.SetFloat("VelX", Input.GetAxis("Horizontal"));
+        anim.SetFloat("VelY", Input.GetAxis("Vertical"));
 
         if (puedeSaltar)
         {
@@ -98,9 +103,10 @@ public class PlayerController : MonoBehaviour
                 }
                 anim.SetBool("tocoSuelo", true);
             }
-            
+
         }
-        else {
+        else
+        {
             personajeEnCaida();
         }
     }
