@@ -53,9 +53,9 @@ public class VidaFPS : MonoBehaviour
                 TakeDamageBarHP();
                 Destroy(GameObject.FindWithTag("Botiquin"));
                 break;
-            case "CajaGanar":
+            case "WinLvl1":
                 soundManager.ChooseAudio(6, 0.4f);
-                Destroy(GameObject.FindWithTag("CajaGanar"));
+                Destroy(GameObject.FindWithTag("WinLvl1"));
                 OnPlayerWin?.Invoke();
                 soundManager.ChooseAudio(4, 0.4f);
                 break;

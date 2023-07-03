@@ -36,6 +36,7 @@ public class MisionBeneficios : MonoBehaviour
             {
                 textoMision.text = "Misión completada";
                 btnMision.SetActive(true);
+                cuentaNiveles.instance.Nivel(1);
             }
         }
         

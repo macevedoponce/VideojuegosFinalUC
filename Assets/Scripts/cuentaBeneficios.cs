@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class cuentaBeneficios : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float beneficios;
+    public Text numBeneficioText;
 
-    // Update is called once per frame
-    void Update()
+    public static cuentaBeneficios instance;
+    public void Beneficio(float beneficiosRecogidos)
     {
-        
+        beneficios += beneficiosRecogidos;
+        numBeneficioText.text = beneficios.ToString();
+    }
+    private void Awake()
+    {   //singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 }

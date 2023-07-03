@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
         if(hp <= 0)
         {
             Destroy(gameObject);
+            cuentaEnemigosDestruidos.instance.EnemigosDestruidos(1);
         }
     }
 }
