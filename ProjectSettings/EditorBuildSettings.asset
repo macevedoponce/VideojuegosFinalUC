@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneInicio.unity
     guid: ef70978855edfc645a2146205892a9e8
   - enabled: 1
+    path: Assets/Scenes/SceneParkour.unity
+    guid: a0fdf6b09e40364498799de49ce67cf3
+  - enabled: 1
     path: Assets/Scenes/SceneBeneficios.unity
     guid: 9917f515efb70e34fbae076c47cb8b36
   m_configObjects: {}

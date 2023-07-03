@@ -71,7 +71,7 @@ public class MovEnemy : MonoBehaviour
                 anim.SetBool("Run", true);
 
                 distancia = Vector3.Distance(agent.transform.position, target.transform.position);
-                if(distancia <= 2.5f){
+                if(distancia <= 4.5f){
                     // transform.Translate(Vector3.zero);
                     // anim.SetBool("Run", false);
                     // anim.SetBool("Walk", false);

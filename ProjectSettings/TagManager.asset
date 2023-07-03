@@ -18,6 +18,11 @@ TagManager:
   - armaEnemySubordinado
   - Enemy
   - WinLvl1
+  - Pole
+  - Reach
+  - Vault
+  - Slide
+  - Deep Jump
   layers:
   - Default
   - TransparentFX
@@ -27,9 +32,9 @@ TagManager:
   - UI
   - 
   - 
-  - CollisionDecals
-  - 
-  - 
+  - Ledge
+  - Wall
+  - Player
   - 
   - 
   - 
