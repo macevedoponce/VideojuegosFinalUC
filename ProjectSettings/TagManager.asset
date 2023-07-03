@@ -5,6 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Beneficio
+  - espadaImpacto
+  - golpeImpacto
+  - Caja
+  - Municion
+  - Lava
+  - Item
+  - Barril
+  - Fire
+  - Botiquin
+  - Puerta
+  - armaEnemySubordinado
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,7 +26,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - CollisionDecals
   - 
   - 
   - 

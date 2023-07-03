@@ -8,13 +8,11 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource audioController;
 
-    private void Awake()
-    {
+    private void Awake() {
         audioController = GetComponent<AudioSource>();
     }
 
-    public void ChooseAudio(int indice, float volume)
-    {
+    public void ChooseAudio(int indice, float volume){
         audioController.PlayOneShot(sounds[indice], volume);
     }
 }

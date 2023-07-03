@@ -31,7 +31,7 @@ public class LogicaDocente : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X) && aceptarMision==false && jugador.puedeSaltar == true)
+        if(Input.GetKeyDown(KeyCode.P) && aceptarMision==false && jugador.puedeSaltar == true)
         {
             Vector3 posicionJugador = new Vector3(transform.position.x, jugador.gameObject.transform.position.y, transform.position.z);
             jugador.gameObject.transform.LookAt(posicionJugador);

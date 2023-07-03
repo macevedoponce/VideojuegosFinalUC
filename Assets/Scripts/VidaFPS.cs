@@ -67,6 +67,15 @@ public class VidaFPS : MonoBehaviour
                     StartCoroutine(Inmunity());
                 }
                 break;
+            case "armaEnemySubordinado":
+                if (!isInmune)
+                {
+                    //soundManager.ChooseAudio(6, 2f);
+                    currentHealth -= collision.GetComponent<EnemyDamage>().EnemyDamageToGive;
+                    TakeDamageBarHP();
+                    StartCoroutine(Inmunity());
+                }
+                break;
             default:
                 break;
         }

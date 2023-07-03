@@ -124348,6 +124348,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.26666668
+    functionName: "ActivarColliderPu\xF1os"
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.0666667
     functionName: DejoDeAvanzar
     data: 
@@ -124357,6 +124364,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.4
     functionName: DejeDeGolpear
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.6666667
+    functionName: "DesactivarColliderPu\xF1os"
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

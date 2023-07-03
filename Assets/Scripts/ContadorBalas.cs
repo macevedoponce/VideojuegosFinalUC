@@ -11,7 +11,7 @@ public class ContadorBalas : MonoBehaviour
     public static ContadorBalas instance;
 
     private void Start() {
-        muniText.text =  municion.ToString();
+        muniText.text = municion.ToString();
     }
 
     public void MunicionDar(float municionRecogidas){
@@ -19,8 +19,8 @@ public class ContadorBalas : MonoBehaviour
         muniText.text = municion.ToString();
     }
 
-    public void MunicionQuitar(){
-        municion -= 1;
+    public void MunicionQuitar(int municionQuitar){
+        municion -= municionQuitar;
         muniText.text = municion.ToString();
     }
 

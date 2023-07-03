@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     //velocidad del mouse
     public float mouseSensitivity = 2.0f;
 
+    public bool conArma;
+    public int numArma;
+    public Shooter shooter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,17 +80,72 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("correr", false);
         }
 
-        //btn atacck
-        if (Input.GetKeyDown(KeyCode.Return) && puedeSaltar && !estoyAtacando)
-        {
-            anim.SetTrigger("golpeo");
-            estoyAtacando = true;
-        }
+        
 
-        if (Input.GetKeyDown(KeyCode.F1) && puedeSaltar && !estoyAtacando)
+        if (conArma)
         {
-            anim.SetTrigger("golpeoCombo");
-            estoyAtacando = true;
+            switch (numArma)
+            {
+                case 1:
+                    if (Input.GetKeyDown(KeyCode.Mouse0) && puedeSaltar && !estoyAtacando) //espada
+                    {
+                        anim.SetTrigger("golpeEspada");
+                        estoyAtacando = true;
+                    }
+                    break;
+
+                case 2:
+                    if (Input.GetKeyDown(KeyCode.Mouse0) && puedeSaltar && !estoyAtacando) //rifle
+                    {
+                        anim.SetTrigger("disparoRifle");
+                        estoyAtacando = true;
+                        //shooter.DisparoRifle();
+                    }
+                    break;
+
+                case 3:
+                    if (Input.GetKeyDown(KeyCode.Mouse0) && puedeSaltar && !estoyAtacando) //pistola
+                    {
+                        anim.SetTrigger("disparoPistola");
+                        estoyAtacando = true;
+                        //shooter.DisparoPistola();
+                    }
+                    break;
+
+            }
+
+            //if (Input.GetKeyDown(KeyCode.Mouse0) && puedeSaltar && !estoyAtacando && numArma == 1) //espada
+            //{
+            //    anim.SetTrigger("golpeEspada");
+            //    estoyAtacando = true;
+            //}
+
+            //if (Input.GetKeyDown(KeyCode.Mouse0) && puedeSaltar && !estoyAtacando && numArma == 2) //rifle
+            //{
+            //    anim.SetTrigger("disparoRifle");
+            //    estoyAtacando = true;
+            //}
+
+            //if (Input.GetKeyDown(KeyCode.Mouse0) && puedeSaltar && !estoyAtacando && numArma == 3) //pistola
+            //{
+            //    anim.SetTrigger("disparoPistola");
+            //    estoyAtacando = true;
+            //}
+        }
+        else
+        {
+            //btn atacck
+            if (Input.GetKeyDown(KeyCode.Mouse0) && puedeSaltar && !estoyAtacando)
+            {
+                anim.SetTrigger("golpeo");
+                estoyAtacando = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1) && puedeSaltar && !estoyAtacando)
+            {
+                anim.SetTrigger("golpeoCombo");
+                estoyAtacando = true;
+            }
         }
 
         anim.SetFloat("VelX", Input.GetAxis("Horizontal"));
